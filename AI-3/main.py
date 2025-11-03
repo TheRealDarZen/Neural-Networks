@@ -6,7 +6,7 @@ from data_loader import *
 # Variables
 LR = 0.001
 BATCH_SIZE = 16
-EPOCHS = 100
+EPOCHS = 60
 HIDDEN_LAYER_SIZE = 64
 
 
@@ -29,10 +29,10 @@ def main():
     layers = [
         Linear(X_train.shape[0], HIDDEN_LAYER_SIZE),
         ReLU(),
-        Linear(HIDDEN_LAYER_SIZE, 1),
-        ReLU()
+        Linear(HIDDEN_LAYER_SIZE, 5),
+        Softmax()
     ]
-    loss_fn = BinaryCrossEntropy()
+    loss_fn = CategoricalCrossEntropy()
 
     # Train loop
     for epoch in range(EPOCHS):
@@ -45,11 +45,11 @@ def main():
             y_pred = out
 
             # Loss
-            loss = loss_fn.forward(y_pred, y_batch)
+            loss = loss_fn.loss(y_pred, y_batch)
             epoch_loss += loss
 
             # Backward
-            grad = loss_fn.backward()
+            grad = loss_fn.grad()
             for layer in reversed(layers):
                 grad = layer.backward(grad)
 
@@ -69,7 +69,7 @@ def main():
     y_pred = out
 
     # Results
-    pred_classes = (y_pred > 0.5).astype(int)
+    pred_classes = np.argmax(y_pred, axis=0)
     acc = np.mean(pred_classes == y_test)
     print("Test accuracy:", acc)
 

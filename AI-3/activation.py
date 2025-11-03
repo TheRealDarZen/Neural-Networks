@@ -18,3 +18,14 @@ class ReLU:
         dX = dY.copy()
         dX[self.x <= 0] = 0
         return dX
+
+
+class Softmax:
+    def forward(self, x):
+        x_shifted = x - np.max(x, axis=0, keepdims=True)
+        exp_x = np.exp(x_shifted)
+        self.y = exp_x / np.sum(exp_x, axis=0, keepdims=True)
+        return self.y
+
+    def backward(self, dY):
+        return dY

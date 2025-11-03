@@ -1,8 +1,9 @@
 import numpy as np
 
 class Linear:
-    def __init__(self, in_dim, out_dim, std=0.01):
-        self.W = np.random.randn(out_dim, in_dim) * std
+    def __init__(self, in_dim, out_dim):
+        self.std = np.sqrt(2 / in_dim)
+        self.W = np.random.randn(out_dim, in_dim) * self.std
         self.b = np.zeros((out_dim, 1))
 
     def forward(self, x):
