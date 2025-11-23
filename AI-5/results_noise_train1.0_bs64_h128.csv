@@ -1,0 +1,7 @@
+experiment_id,model,batch_size,train_percent,hidden_size,noise_train,noise_test,final_train_loss,final_test_loss,accuracy,plot_file
+1,OneLayer,64,1.0,128,0.0,0.0,0.192146,0.342788,0.8852,plot_OneLayer_bs64_train1.0_h128_noise0.0-0.0.png
+2,OneLayer,64,1.0,128,0.0,0.3,0.193646,1.209312,0.7315,plot_OneLayer_bs64_train1.0_h128_noise0.0-0.3.png
+3,OneLayer,64,1.0,128,0.3,0.3,0.335689,0.396338,0.8572,plot_OneLayer_bs64_train1.0_h128_noise0.3-0.3.png
+4,TwoLayer,64,1.0,128,0.0,0.0,0.169431,0.371435,0.8899,plot_TwoLayer_bs64_train1.0_h128_noise0.0-0.0.png
+5,TwoLayer,64,1.0,128,0.0,0.3,0.16974,1.569081,0.727,plot_TwoLayer_bs64_train1.0_h128_noise0.0-0.3.png
+6,TwoLayer,64,1.0,128,0.3,0.3,0.319363,0.386561,0.8575,plot_TwoLayer_bs64_train1.0_h128_noise0.3-0.3.png
